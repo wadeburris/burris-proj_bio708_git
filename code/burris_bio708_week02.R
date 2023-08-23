@@ -112,7 +112,6 @@ x == 2
 
 which(x == 2, arr.ind = TRUE)
 
-
 # data frame --------------------------------------------------------------
 
 # Create data frame
@@ -125,3 +124,72 @@ colnames(df0) # call column names
 df0$LakeType # access LakeType
 df0$TSS
 df0[c(2,4),] # access row #2 and 4
+
+
+# exercise ----------------------------------------------------------------
+
+v1 <- c(1:3)
+v2 <- c(1:6)
+v3 <- seq (1,20, by = 1)
+
+va <- c("a", "b", "c")
+vb <- rep("a", 6)
+vc <- character(20)
+
+set.seed(1)
+x <- rnorm(100)
+
+z <- which(x > 2)
+x > 2
+meanx <- mean(z)
+
+x <- cbind(c(1,1,1,1), c(1,1,1,1), c(1,1,1,1), c(1,1,1,1))
+x
+
+x <- cbind(c("a","a","a","a"), c("a","a","a","a"), c("a","a","a","a"), c("a","a","a","a"))
+x
+
+typeof(x)
+
+set.seed(1)
+x <- matrix(rnorm(100), nrow = 10, ncol = 10)
+z <- which(x > 2)
+z
+x > 2
+meanx <- mean(z)
+meanx
+
+x <- c("a", "b", "c", "d", "e", "f", "g","h", "i", "j")
+y <- c(1:10) 
+z <- c(11:20)
+
+df0 <- data.frame(character = x, numeric1 = y, numeric2 = z) 
+df0
+class(df0)
+typeof(df0)
+dim(df0)
+
+set.seed(1)
+x <- rnorm(100, mean = 10, sd = 3)
+y <- rpois(100, lambda = 10)
+z <- rep(c("VA", "NC"), 50)
+df0 <- data.frame(temperature = x, abundance = y, state = z)
+df0
+
+df0 
+
+a <- seq(1, 99, by = 2)
+b <- seq(2, 100, by = 2)
+
+VA <- df0[a,]
+NC <- df0[b,]
+
+tempVA <- mean(VA$temperature)
+tempNC <- mean(NC$temperature)
+tempVA #mean temperature in VA
+tempNC #mean temperature in NC
+
+abdVA <- mean(VA$abundance)
+abdNC <- mean(NC$abundance)
+abdVA #mean abundance in VA
+abdNC #mean abundance in NC
