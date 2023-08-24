@@ -11,7 +11,7 @@
 
 <meta name="author" content="wadeburris" />
 
-<meta name="date" content="2023-08-22" />
+<meta name="date" content="2023-08-23" />
 
 <title>burris_bio708_week02.R</title>
 
@@ -352,7 +352,7 @@ display: none;
 
 <h1 class="title toc-ignore">burris_bio708_week02.R</h1>
 <h4 class="author">wadeburris</h4>
-<h4 class="date">2023-08-22</h4>
+<h4 class="date">2023-08-23</h4>
 
 </div>
 
@@ -492,6 +492,341 @@ x</code></pre>
 <pre class="r"><code>which(x == 2, arr.ind = TRUE)</code></pre>
 <pre><code>##      row col
 ## [1,]   2   1</code></pre>
+<pre class="r"><code># data frame --------------------------------------------------------------
+
+# Create data frame
+x &lt;- c(&quot;Pristine&quot;, &quot;Pristine&quot;, &quot;Disturbed&quot;, &quot;Disturbed&quot;, &quot;Pristine&quot;) # Lake type
+y &lt;- c(1.2, 2.2, 10.9, 50.0, 3.0) # TSS: total suspended solids (mg/L)
+df0 &lt;- data.frame(LakeType = x, TSS = y) # x is named as &quot;LakeType&quot; while y is named as &quot;TSS&quot;
+df0</code></pre>
+<pre><code>##    LakeType  TSS
+## 1  Pristine  1.2
+## 2  Pristine  2.2
+## 3 Disturbed 10.9
+## 4 Disturbed 50.0
+## 5  Pristine  3.0</code></pre>
+<pre class="r"><code>colnames(df0) # call column names</code></pre>
+<pre><code>## [1] &quot;LakeType&quot; &quot;TSS&quot;</code></pre>
+<pre class="r"><code>df0$LakeType # access LakeType</code></pre>
+<pre><code>## [1] &quot;Pristine&quot;  &quot;Pristine&quot;  &quot;Disturbed&quot; &quot;Disturbed&quot; &quot;Pristine&quot;</code></pre>
+<pre class="r"><code>df0$TSS</code></pre>
+<pre><code>## [1]  1.2  2.2 10.9 50.0  3.0</code></pre>
+<pre class="r"><code>df0[c(2,4),] # access row #2 and 4</code></pre>
+<pre><code>##    LakeType  TSS
+## 2  Pristine  2.2
+## 4 Disturbed 50.0</code></pre>
+<pre class="r"><code># exercise ----------------------------------------------------------------
+
+v1 &lt;- c(1:3)
+v2 &lt;- c(1:6)
+v3 &lt;- seq (1,20, by = 1)
+
+va &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+vb &lt;- rep(&quot;a&quot;, 6)
+vc &lt;- character(20)
+
+set.seed(1)
+x &lt;- rnorm(100)
+
+z &lt;- which(x &gt; 2)
+x &gt; 2</code></pre>
+<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [61]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+##  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [97] FALSE FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>meanx &lt;- mean(z)
+
+x &lt;- cbind(c(1,1,1,1), c(1,1,1,1), c(1,1,1,1), c(1,1,1,1))
+x</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    1    1    1
+## [2,]    1    1    1    1
+## [3,]    1    1    1    1
+## [4,]    1    1    1    1</code></pre>
+<pre class="r"><code>x &lt;- cbind(c(&quot;a&quot;,&quot;a&quot;,&quot;a&quot;,&quot;a&quot;), c(&quot;a&quot;,&quot;a&quot;,&quot;a&quot;,&quot;a&quot;), c(&quot;a&quot;,&quot;a&quot;,&quot;a&quot;,&quot;a&quot;), c(&quot;a&quot;,&quot;a&quot;,&quot;a&quot;,&quot;a&quot;))
+x</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,] &quot;a&quot;  &quot;a&quot;  &quot;a&quot;  &quot;a&quot; 
+## [2,] &quot;a&quot;  &quot;a&quot;  &quot;a&quot;  &quot;a&quot; 
+## [3,] &quot;a&quot;  &quot;a&quot;  &quot;a&quot;  &quot;a&quot; 
+## [4,] &quot;a&quot;  &quot;a&quot;  &quot;a&quot;  &quot;a&quot;</code></pre>
+<pre class="r"><code>typeof(x)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>set.seed(1)
+x &lt;- matrix(rnorm(100), nrow = 10, ncol = 10)
+z &lt;- which(x &gt; 2)
+z</code></pre>
+<pre><code>## [1] 61 70</code></pre>
+<pre class="r"><code>x &gt; 2</code></pre>
+<pre><code>##        [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10]
+##  [1,] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+##  [2,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [3,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [4,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [5,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [6,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [7,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [8,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [9,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [10,] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>meanx &lt;- mean(z)
+meanx</code></pre>
+<pre><code>## [1] 65.5</code></pre>
+<pre class="r"><code>x &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;,&quot;h&quot;, &quot;i&quot;, &quot;j&quot;)
+y &lt;- c(1:10) 
+z &lt;- c(11:20)
+
+df0 &lt;- data.frame(character = x, numeric1 = y, numeric2 = z) 
+df0</code></pre>
+<pre><code>##    character numeric1 numeric2
+## 1          a        1       11
+## 2          b        2       12
+## 3          c        3       13
+## 4          d        4       14
+## 5          e        5       15
+## 6          f        6       16
+## 7          g        7       17
+## 8          h        8       18
+## 9          i        9       19
+## 10         j       10       20</code></pre>
+<pre class="r"><code>class(df0)</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<pre class="r"><code>typeof(df0)</code></pre>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<pre class="r"><code>dim(df0)</code></pre>
+<pre><code>## [1] 10  3</code></pre>
+<pre class="r"><code>set.seed(1)
+x &lt;- rnorm(100, mean = 10, sd = 3)
+y &lt;- rpois(100, lambda = 10)
+z &lt;- rep(c(&quot;VA&quot;, &quot;NC&quot;), 50)
+df0 &lt;- data.frame(temperature = x, abundance = y, state = z)
+df0</code></pre>
+<pre><code>##     temperature abundance state
+## 1      8.120639         8    VA
+## 2     10.550930        10    NC
+## 3      7.493114         7    VA
+## 4     14.785842         6    NC
+## 5     10.988523        15    VA
+## 6      7.538595        12    NC
+## 7     11.462287        12    VA
+## 8     12.214974        11    NC
+## 9     11.727344        15    VA
+## 10     9.083835         7    NC
+## 11    14.535344        10    VA
+## 12    11.169530        10    NC
+## 13     8.136278         4    VA
+## 14     3.355900         8    NC
+## 15    13.374793         8    VA
+## 16     9.865199         9    NC
+## 17     9.951429        11    VA
+## 18    12.831509         9    NC
+## 19    12.463664         8    VA
+## 20    11.781704        14    NC
+## 21    12.756932         9    VA
+## 22    12.346409         9    NC
+## 23    10.223695         9    VA
+## 24     4.031945        12    NC
+## 25    11.859477         9    VA
+## 26     9.831614         9    NC
+## 27     9.532613         7    VA
+## 28     5.587743        14    NC
+## 29     8.565550         8    VA
+## 30    11.253825        12    NC
+## 31    14.076039         6    VA
+## 32     9.691637        10    NC
+## 33    11.163015         5    VA
+## 34     9.838585         6    NC
+## 35     5.868821         7    VA
+## 36     8.755016        12    NC
+## 37     8.817130        10    VA
+## 38     9.822060         8    NC
+## 39    13.300076         6    VA
+## 40    12.289527         6    NC
+## 41     9.506429         6    VA
+## 42     9.239915        10    NC
+## 43    12.090890        15    VA
+## 44    11.669990         9    NC
+## 45     7.933733        17    VA
+## 46     7.877515        12    NC
+## 47    11.093746         9    VA
+## 48    12.305599         7    NC
+## 49     9.662961         8    VA
+## 50    12.643323         5    NC
+## 51    11.194318        11    VA
+## 52     8.163921         8    NC
+## 53    11.023359        18    VA
+## 54     6.611911        15    NC
+## 55    14.299071        12    VA
+## 56    15.941200        12    NC
+## 57     8.898336         8    VA
+## 58     6.867596        12    NC
+## 59    11.709159         8    VA
+## 60     9.594836         6    NC
+## 61    17.204853        17    VA
+## 62     9.882280        10    NC
+## 63    12.069218        11    VA
+## 64    10.084006         9    NC
+## 65     7.770180         8    VA
+## 66    10.566377         9    NC
+## 67     4.585124        12    VA
+## 68    14.396665        16    NC
+## 69    10.459760        13    VA
+## 70    16.517835        13    NC
+## 71    11.426529         6    VA
+## 72     7.870161         8    NC
+## 73    11.832179        13    VA
+## 74     7.197707        11    NC
+## 75     6.239100         9    VA
+## 76    10.874339        10    NC
+## 77     8.670124         7    VA
+## 78    10.003316         8    NC
+## 79    10.223024         7    VA
+## 80     8.231437        10    NC
+## 81     8.293994        16    VA
+## 82     9.594464         7    NC
+## 83    13.534261         6    VA
+## 84     5.429300         6    NC
+## 85    11.781839         6    VA
+## 86    10.998851         8    NC
+## 87    13.189300         6    VA
+## 88     9.087448        15    NC
+## 89    11.110056        15    VA
+## 90    10.801296         8    NC
+## 91     8.372440         2    VA
+## 92    13.623603         8    NC
+## 93    13.481208        12    VA
+## 94    12.100641         9    NC
+## 95    14.760500         8    VA
+## 96    11.675459        12    NC
+## 97     6.170223        10    VA
+## 98     8.280204         6    NC
+## 99     6.326162         5    VA
+## 100    8.579798        13    NC</code></pre>
+<pre class="r"><code>df0 </code></pre>
+<pre><code>##     temperature abundance state
+## 1      8.120639         8    VA
+## 2     10.550930        10    NC
+## 3      7.493114         7    VA
+## 4     14.785842         6    NC
+## 5     10.988523        15    VA
+## 6      7.538595        12    NC
+## 7     11.462287        12    VA
+## 8     12.214974        11    NC
+## 9     11.727344        15    VA
+## 10     9.083835         7    NC
+## 11    14.535344        10    VA
+## 12    11.169530        10    NC
+## 13     8.136278         4    VA
+## 14     3.355900         8    NC
+## 15    13.374793         8    VA
+## 16     9.865199         9    NC
+## 17     9.951429        11    VA
+## 18    12.831509         9    NC
+## 19    12.463664         8    VA
+## 20    11.781704        14    NC
+## 21    12.756932         9    VA
+## 22    12.346409         9    NC
+## 23    10.223695         9    VA
+## 24     4.031945        12    NC
+## 25    11.859477         9    VA
+## 26     9.831614         9    NC
+## 27     9.532613         7    VA
+## 28     5.587743        14    NC
+## 29     8.565550         8    VA
+## 30    11.253825        12    NC
+## 31    14.076039         6    VA
+## 32     9.691637        10    NC
+## 33    11.163015         5    VA
+## 34     9.838585         6    NC
+## 35     5.868821         7    VA
+## 36     8.755016        12    NC
+## 37     8.817130        10    VA
+## 38     9.822060         8    NC
+## 39    13.300076         6    VA
+## 40    12.289527         6    NC
+## 41     9.506429         6    VA
+## 42     9.239915        10    NC
+## 43    12.090890        15    VA
+## 44    11.669990         9    NC
+## 45     7.933733        17    VA
+## 46     7.877515        12    NC
+## 47    11.093746         9    VA
+## 48    12.305599         7    NC
+## 49     9.662961         8    VA
+## 50    12.643323         5    NC
+## 51    11.194318        11    VA
+## 52     8.163921         8    NC
+## 53    11.023359        18    VA
+## 54     6.611911        15    NC
+## 55    14.299071        12    VA
+## 56    15.941200        12    NC
+## 57     8.898336         8    VA
+## 58     6.867596        12    NC
+## 59    11.709159         8    VA
+## 60     9.594836         6    NC
+## 61    17.204853        17    VA
+## 62     9.882280        10    NC
+## 63    12.069218        11    VA
+## 64    10.084006         9    NC
+## 65     7.770180         8    VA
+## 66    10.566377         9    NC
+## 67     4.585124        12    VA
+## 68    14.396665        16    NC
+## 69    10.459760        13    VA
+## 70    16.517835        13    NC
+## 71    11.426529         6    VA
+## 72     7.870161         8    NC
+## 73    11.832179        13    VA
+## 74     7.197707        11    NC
+## 75     6.239100         9    VA
+## 76    10.874339        10    NC
+## 77     8.670124         7    VA
+## 78    10.003316         8    NC
+## 79    10.223024         7    VA
+## 80     8.231437        10    NC
+## 81     8.293994        16    VA
+## 82     9.594464         7    NC
+## 83    13.534261         6    VA
+## 84     5.429300         6    NC
+## 85    11.781839         6    VA
+## 86    10.998851         8    NC
+## 87    13.189300         6    VA
+## 88     9.087448        15    NC
+## 89    11.110056        15    VA
+## 90    10.801296         8    NC
+## 91     8.372440         2    VA
+## 92    13.623603         8    NC
+## 93    13.481208        12    VA
+## 94    12.100641         9    NC
+## 95    14.760500         8    VA
+## 96    11.675459        12    NC
+## 97     6.170223        10    VA
+## 98     8.280204         6    NC
+## 99     6.326162         5    VA
+## 100    8.579798        13    NC</code></pre>
+<pre class="r"><code>a &lt;- seq(1, 99, by = 2)
+b &lt;- seq(2, 100, by = 2)
+
+VA &lt;- df0[a,]
+NC &lt;- df0[b,]
+
+tempVA &lt;- mean(VA$temperature)
+tempNC &lt;- mean(NC$temperature)
+tempVA #mean temperature in VA</code></pre>
+<pre><code>## [1] 10.58658</code></pre>
+<pre class="r"><code>tempNC #mean temperature in NC</code></pre>
+<pre><code>## [1] 10.06675</code></pre>
+<pre class="r"><code>abdVA &lt;- mean(VA$abundance)
+abdNC &lt;- mean(NC$abundance)
+abdVA #mean abundance in VA</code></pre>
+<pre><code>## [1] 9.5</code></pre>
+<pre class="r"><code>abdNC #mean abundance in NC</code></pre>
+<pre><code>## [1] 9.72</code></pre>
 
 
 
