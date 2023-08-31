@@ -200,7 +200,7 @@ abdNC #mean abundance in NC
 # tidyverse ---------------------------------------------------------------
 
 
-#install.packages("tidyverse")
+install.packages("tidyverse")
 library(tidyverse)
 
 
@@ -319,4 +319,50 @@ left_join(x = df1,
 
 # Tidyverse exercises 1-4 -------------------------------------------------
 
+install.packages('ggplot2movies')
+library(ggplot2movies)
+data('movies')
+typeof(movies)
+class(movies)
+install.packages("diplyr")
+
+#1a
+movies = movies %>% 
+  mutate(new_ratings = rating - mean(rating))
+
+#1b
+movies = movies %>% 
+  filter(year >= 2000)
+
+#1c
+movies = movies %>% 
+select(title, year, budget, length, rating, votes)
+
+#1d
+movies = movies %>% 
+rename(length_in_min = length)
+
+#2
+movies = movies %>% 
+  group_by(year)
+movies = movies %>% 
+summarize(avg_budget = mean(budget), na.rn=TRUE)
+
+#3
+dat = tibble(id = 1:10,
+             x = rnorm(10),
+             y = rnorm(10))
+dat = dat %>%
+pivot_longer(cols = c(x,y), names_to = "variable", values_to = "values")
+
+#4
+data('movies')
+movies = movies %>%
+  filter(year >= 1990)
+movies = movies %>% 
+  select(mpaa, Action, Drama, title, year, budget, length, rating, votes)
+movies = movies %>%
+  group_by(mpaa, Action)
+movies = movies %>%
+  summarize(avg_rating = mean(rating), na.rn=TRUE)
 
