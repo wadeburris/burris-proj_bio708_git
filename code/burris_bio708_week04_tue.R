@@ -4,7 +4,7 @@
 
 library(tidyverse)
 
-#central tendancy
+#central tendency
 
 # construct vectors x and y
 x <- c(15.9, 15.1, 21.9, 13.3, 24.4)
